@@ -63,5 +63,4 @@ ortho_plot <- ggplot_spaghetti(y = distance, id = Subject, time = age,
   scale_color_grey(name = "Gender", start = 0.0, end = 0.5)+
   scale_linetype_manual(name = "Race", values = c("dashed", "solid"))
 ortho_plot
-
 ```
