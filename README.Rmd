@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 
 # ggplot.spaghetti
 
-The goal of ggplot.spaghetti is to ...
+The goal of `ggplot.spaghetti` is to aid preliminary data investigation into longitudinal/time-series data through visualization. By being able to create plots using different grouping variable, the investigator can have a better idea which variables may be worthwhile to control or include in a hypothesis test. Also these images can be used to help rely to other non-statistical collaborators the trends from a mixed-effects or other type of longitudinal model. 
 
 ## Installation
 
