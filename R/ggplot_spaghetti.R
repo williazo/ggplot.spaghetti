@@ -13,7 +13,7 @@
 #'@param group Specifies a grouping variable to be used, and will plot it by color on one single plot.
 #'@param wrap Another possible grouping variable, but this will use facet_wrap() to create separate plots for each grouping variable.
 #'
-#'@return Returns a ggplot image.
+#'@return Plots a time series data by each individual/unit with group trends overlayed.
 #'
 #'@examples
 #'library(nlme)
