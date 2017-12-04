@@ -31,7 +31,10 @@ ortho_plot_group <- ggplot_spaghetti(y = distance, id = Subject, time = age,
   scale_color_grey(name = "Gender", start = 0.0, end = 0.5)+
   scale_linetype_manual(name = "Gender", values = c("dashed", "solid"))
 ortho_plot_group
+```
+![Graphing trends by age using greyscale](ortho_plot_group.jpg)
 
+``` r
 #specifying just wrap
 ortho_plot_wrap <- ggplot_spaghetti(y = distance, id = Subject, time = age,
                                alpha = 0.3, wrap = Race, method = "loess")+
@@ -40,7 +43,10 @@ ortho_plot_wrap <- ggplot_spaghetti(y = distance, id = Subject, time = age,
   scale_color_grey(name = "Race", start = 0.0, end = 0.5)+
   scale_linetype_manual(name = "Race", values = c("dashed", "solid"))
 ortho_plot_wrap
+```
+![Graphing trends by race using LOESS smoth](ortho_plot_wrap.jpg)
 
+``` r
 #specifying both group and wrap
 ortho_plot <- ggplot_spaghetti(y = distance, id = Subject, time = age,
                                alpha = 0.3, group = Sex, wrap = Race,
@@ -51,3 +57,4 @@ ortho_plot <- ggplot_spaghetti(y = distance, id = Subject, time = age,
   scale_linetype_manual(name = "Race", values = c("dashed", "solid"))
 ortho_plot
 ```
+![Graphing trends by age and race](ortho_plot.jpg)
