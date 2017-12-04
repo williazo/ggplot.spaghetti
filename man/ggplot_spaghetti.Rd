@@ -25,7 +25,7 @@ ggplot_spaghetti(y, id, time, alpha = 0.2, method = "loess", jit = 0,
 \item{wrap}{Another possible grouping variable, but this will use facet_wrap() to create separate plots for each grouping variable.}
 }
 \value{
-Returns a ggplot image.
+Plots a time series data by each individual/unit with group trends overlayed.
 }
 \description{
 This function allows the user to create spaghetti plots for individuals with time varying covariates. You can also break this down into subgroups to analyze different trentds.
