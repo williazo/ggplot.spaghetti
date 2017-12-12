@@ -71,7 +71,7 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
     groups <- unique(as.character(gg_dat$group))
     #adding a check to make sure that the number of groups is not too large for the linetype
     if(length(groups)>13){
-      gg_dat$lty_group <- rep(2, nrow(gg_dat))
+      gg_dat$lty_group <- as.factor(rep("solid", nrow(gg_dat)))
     } else{
       gg_dat$lty_group <- gg_dat$group
     }
@@ -108,7 +108,7 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
     wraps <- unique(as.character(gg_dat$wrap))
     #adding a check to make sure that the number of groups is not too large for the linetype
     if(length(wraps)>13){
-      gg_dat$lty_wrap <- rep(2, nrow(gg_dat))
+      gg_dat$lty_wrap <- as.factor(rep("solid", nrow(gg_dat)))
     } else{
       gg_dat$lty_wrap <- gg_dat$wrap
     }
@@ -148,7 +148,7 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
     wraps <- unique(as.character(gg_dat$wrap))
     #adding a check to make sure that the number of groups is not too large for the linetype
     if(length(wraps)>13){
-      gg_dat$lty_wrap <- rep(2, nrow(gg_dat))
+      gg_dat$lty_wrap <- as.factor(rep("solid", nrow(gg_dat)))
     } else{
       gg_dat$lty_wrap <- gg_dat$wrap
     }

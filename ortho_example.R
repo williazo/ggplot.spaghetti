@@ -1,3 +1,5 @@
+library(devtools)
+install_github("williazo/ggplot.spaghetti")
 library(ggplot.spaghetti)
 library(nlme)
 data("Orthodont")
