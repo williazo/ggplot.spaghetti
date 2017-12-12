@@ -71,9 +71,9 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
     groups <- unique(as.character(gg_dat$group))
     #adding a check to make sure that the number of groups is not too large for the linetype
     if(length(groups)>13){
-      lty_group <- 2
+      gg_dat$lty_group <- rep(2, nrow(gg_dat))
     } else{
-      lty_group <- group
+      gg_dat$lty_group <- gg_dat$group
     }
     base <- ggplot() + xlab("") + ylab("")
     for(i in ids){
@@ -108,9 +108,9 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
     wraps <- unique(as.character(gg_dat$wrap))
     #adding a check to make sure that the number of groups is not too large for the linetype
     if(length(wraps)>13){
-      lty_wrap <- 2
+      gg_dat$lty_wrap <- rep(2, nrow(gg_dat))
     } else{
-      lty_wrap <- wrap
+      gg_dat$lty_wrap <- gg_dat$wrap
     }
     ids <- as.character(unique(gg_dat$id))
     base <- ggplot() + xlab("") + ylab("")
@@ -125,11 +125,11 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
           facet_wrap( ~ wrap)
       }
       if(nrow(gg_dat_ind) >= 2){ #I am adding in this condition so that I don't get errros if there is only one data point
-        base <- base + geom_line(data = gg_dat_ind, aes(x = time, y = y, linetype = wrap, col = wrap), alpha = alpha)+
+        base <- base + geom_line(data = gg_dat_ind, aes(x = time, y = y, linetype = lty_wrap, col = wrap), alpha = alpha)+
           facet_wrap( ~ wrap)
       }
     }
-    base <- base + stat_smooth(data = gg_dat, aes(x = time, y = y, linetype = wrap, col = wrap),
+    base <- base + stat_smooth(data = gg_dat, aes(x = time, y = y, linetype = lty_wrap, col = wrap),
                                lwd = 2.5, method = method, se = FALSE)
     return(base)
   }
@@ -145,6 +145,13 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
     gg_dat <- subset(gg_dat, !is.na(y))
     ids <- as.character(unique(gg_dat$id))
     groups <- unique(as.character(gg_dat$group))
+    wraps <- unique(as.character(gg_dat$wrap))
+    #adding a check to make sure that the number of groups is not too large for the linetype
+    if(length(wraps)>13){
+      gg_dat$lty_wrap <- rep(2, nrow(gg_dat))
+    } else{
+      gg_dat$lty_wrap <- gg_dat$wrap
+    }
     base <- ggplot() + xlab("") + ylab("")
     for(i in ids){
       for (j in groups){
@@ -154,16 +161,16 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
         gg_dat_grp$time <- jitter(gg_dat_grp$time, amount = rx)
         gg_dat_grp$y <- jitter(gg_dat_grp$y, amount = ry)
         if(nrow(gg_dat_grp) >= 1){
-          base <- base + geom_point(data = gg_dat_grp, aes(x = time, y = y, col = group, linetype = wrap), alpha = alpha)+
+          base <- base + geom_point(data = gg_dat_grp, aes(x = time, y = y, col = group, linetype = lty_wrap), alpha = alpha)+
             facet_wrap( ~ wrap)
         }
         if(nrow(gg_dat_grp) >= 2){ #I am adding in this condition so that I don't get errros if there is only one data point
-          base <- base + geom_line(data = gg_dat_grp, aes(x = time, y = y, col = group, linetype = wrap), alpha = alpha)+
+          base <- base + geom_line(data = gg_dat_grp, aes(x = time, y = y, col = group, linetype = lty_wrap), alpha = alpha)+
             facet_wrap( ~ wrap)
         }
       }
     }
-    base <- base + stat_smooth(data = gg_dat, aes(x = time, y = y, col = group, linetype = wrap),
+    base <- base + stat_smooth(data = gg_dat, aes(x = time, y = y, col = group, linetype = lty_wrap),
                                lwd = 2.5, method = method, se = FALSE)
     return(base)
   }
