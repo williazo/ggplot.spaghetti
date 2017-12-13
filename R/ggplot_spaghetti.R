@@ -11,7 +11,8 @@
 #'@param method Character value that specifies which type of method to use for fitting. Optional methods come from stat_smooth() funciton.
 #'@param jit Scalar value that specifies how much you want to jitter each individual observation. Useful if many of the values share the same y values at a time point.
 #'@param group Specifies a grouping variable to be used, and will plot it by color on one single plot.
-#'@param wrap Another possible grouping variable, but this will use facet_wrap() to create separate plots for each grouping variable.
+#'@param wrap Another possible grouping variable, but this will use `facet_wrap()` to create separate plots for each grouping variable.
+#'@param scales Specify the scales paremeter for `facet_wrap()` in ggplot2.
 #'
 #'@return Plots a time series data by each individual/unit with group trends overlayed.
 #'
@@ -25,10 +26,12 @@
 #'scale_color_discrete(name="Gender")
 #'ortho_plot
 #'
+#'@import ggplot2
+#'
 #'@export
 #'
 ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
-                             jit = 0.0, group = NULL, wrap = NULL, bw = FALSE){
+                             jit = 0.0, group = NULL, wrap = NULL, bw = FALSE, scales = NULL){
   #necessary packages
   list.of.packages <- c("ggplot2")
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
@@ -36,6 +39,9 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
   rm(new.packages, list.of.packages) #removing these objects after I use them
 
   require(ggplot2)
+  if(is.null(scales) == F & is.null(wrap) == T){
+    stop("scales parameter can only be specified when using the wrap option.", call. = F)
+  }
 
   #this first section will product a ggplot without any grouping variables
   if(is.null(group) == T & is.null(wrap) == T){
@@ -122,11 +128,11 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
       gg_dat_ind$y <- jitter(gg_dat_ind$y, amount = ry)
       if(nrow(gg_dat_ind) >= 1){
         base <- base + geom_point(data = gg_dat_ind, aes(x = time, y = y, linetype = lty_wrap, col = wrap), alpha = alpha)+
-          facet_wrap( ~ wrap)
+          facet_wrap( ~ wrap, scales = scales)
       }
       if(nrow(gg_dat_ind) >= 2){ #I am adding in this condition so that I don't get errros if there is only one data point
         base <- base + geom_line(data = gg_dat_ind, aes(x = time, y = y, linetype = lty_wrap, col = wrap), alpha = alpha)+
-          facet_wrap( ~ wrap)
+          facet_wrap( ~ wrap, scales = scales)
       }
     }
     base <- base + stat_smooth(data = gg_dat, aes(x = time, y = y, linetype = lty_wrap, col = wrap),
@@ -162,11 +168,11 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
         gg_dat_grp$y <- jitter(gg_dat_grp$y, amount = ry)
         if(nrow(gg_dat_grp) >= 1){
           base <- base + geom_point(data = gg_dat_grp, aes(x = time, y = y, col = group, linetype = lty_wrap), alpha = alpha)+
-            facet_wrap( ~ wrap)
+            facet_wrap( ~ wrap, scales = scales)
         }
         if(nrow(gg_dat_grp) >= 2){ #I am adding in this condition so that I don't get errros if there is only one data point
           base <- base + geom_line(data = gg_dat_grp, aes(x = time, y = y, col = group, linetype = lty_wrap), alpha = alpha)+
-            facet_wrap( ~ wrap)
+            facet_wrap( ~ wrap, scales = scales)
         }
       }
     }

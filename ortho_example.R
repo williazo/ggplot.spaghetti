@@ -18,7 +18,7 @@ ggsave(ortho_plot_group, file = "ortho_plot_group.jpg", dpi = 600)
 
 #specifying just wrap
 ortho_plot_wrap <- ggplot_spaghetti(y = distance, id = Subject, time = age,
-                                    alpha = 0.3, wrap = Race, method = "loess")+
+                                    alpha = 0.3, wrap = Race, method = "loess", scales = "free")+
   xlab("Age (yrs.)")+
   ylab("Distance")+
   scale_color_grey(name = "Race", start = 0.0, end = 0.5)+
