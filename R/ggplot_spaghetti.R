@@ -59,7 +59,7 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
       rx<-runif(1, min = 0, max = jit)
       gg_dat_ind <- gg_dat[gg_dat$id == i,]
       gg_dat_ind$time <- jitter(gg_dat_ind$time, factor = fact, amount = rx)
-      gg_dat_ind$y <- jitter(gg_dat_ind$y, amount = ry)
+      gg_dat_ind$y <- jitter(gg_dat_ind$y, factor = fact, amount = ry)
       if(nrow(gg_dat_ind) >= 1){
         base <- base + geom_point(data = gg_dat_ind, aes(x = time, y = y), alpha = alpha)
       }
@@ -92,8 +92,8 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
         ry <- runif(1, min = 0, max = jit)
         rx <- runif(1, min = 0, max = jit)
         gg_dat_grp <- gg_dat[gg_dat$id == i & gg_dat$group == j,]
-        gg_dat_grp$time <- jitter(gg_dat_grp$time, amount = rx)
-        gg_dat_grp$y <- jitter(gg_dat_grp$y, amount = ry)
+        gg_dat_grp$time <- jitter(gg_dat_grp$time, factor = fact, amount = rx)
+        gg_dat_grp$y <- jitter(gg_dat_grp$y, factor = fact, amount = ry)
         if(nrow(gg_dat_grp) >= 1){
           base <- base +
             geom_point(data = gg_dat_grp, aes(x = time, y = y, col = group, linetype = lty_group), alpha = alpha)
@@ -129,8 +129,8 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
       ry<-runif(1, min = 0, max = jit)
       rx<-runif(1, min = 0, max = jit)
       gg_dat_ind <- gg_dat[gg_dat$id == i,]
-      gg_dat_ind$time <- jitter(gg_dat_ind$time, amount = rx)
-      gg_dat_ind$y <- jitter(gg_dat_ind$y, amount = ry)
+      gg_dat_ind$time <- jitter(gg_dat_ind$time, factor = fact, amount = rx)
+      gg_dat_ind$y <- jitter(gg_dat_ind$y, factor = fact, amount = ry)
       if(nrow(gg_dat_ind) >= 1){
         base <- base + geom_point(data = gg_dat_ind, aes(x = time, y = y, linetype = lty_wrap, col = wrap), alpha = alpha)+
           facet_wrap( ~ wrap, scales = scales)
@@ -169,8 +169,8 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
         ry <- runif(1, min = 0, max = jit)
         rx <- runif(1, min = 0, max = jit)
         gg_dat_grp <- gg_dat[gg_dat$id == i & gg_dat$group == j,]
-        gg_dat_grp$time <- jitter(gg_dat_grp$time, amount = rx)
-        gg_dat_grp$y <- jitter(gg_dat_grp$y, amount = ry)
+        gg_dat_grp$time <- jitter(gg_dat_grp$time, factor = fact, amount = rx)
+        gg_dat_grp$y <- jitter(gg_dat_grp$y, factor = fact, amount = ry)
         if(nrow(gg_dat_grp) >= 1){
           base <- base + geom_point(data = gg_dat_grp, aes(x = time, y = y, col = group, linetype = lty_wrap), alpha = alpha)+
             facet_wrap( ~ wrap, scales = scales)
