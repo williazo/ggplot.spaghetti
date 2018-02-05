@@ -5,7 +5,7 @@
 \title{Spaghetti Plots using \code{ggplot2}}
 \usage{
 ggplot_spaghetti(y, id, time, alpha = 0.2, method = "loess", jit = 0,
-  group = NULL, wrap = NULL, bw = FALSE)
+  group = NULL, wrap = NULL, bw = FALSE, scales = NULL)
 }
 \arguments{
 \item{y}{This is the y-axis parameter to specify. Generally it is a continuous variable.}
@@ -22,7 +22,9 @@ ggplot_spaghetti(y, id, time, alpha = 0.2, method = "loess", jit = 0,
 
 \item{group}{Specifies a grouping variable to be used, and will plot it by color on one single plot.}
 
-\item{wrap}{Another possible grouping variable, but this will use facet_wrap() to create separate plots for each grouping variable.}
+\item{wrap}{Another possible grouping variable, but this will use `facet_wrap()` to create separate plots for each grouping variable.}
+
+\item{scales}{Specify the scales paremeter for `facet_wrap()` in ggplot2.}
 }
 \value{
 Plots a time series data by each individual/unit with group trends overlayed.
