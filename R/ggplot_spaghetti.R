@@ -43,9 +43,11 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
     stop("scales parameter can only be specified when using the wrap option.", call. = F)
   }
 
+  #setting the factor variable to 0 when jit equals 0 so that there is no jittering
   if(jit == 0){
     fact = 0
   } else{fact = 1}
+
   #this first section will product a ggplot without any grouping variables
   if(is.null(group) == T & is.null(wrap) == T){
     gg_dat <- data.frame(y, id, time)
