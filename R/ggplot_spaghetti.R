@@ -37,6 +37,9 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
 
   require(ggplot2)
 
+  if(jit == 0){
+    fact = 0
+  } else{fact = 1}
   #this first section will product a ggplot without any grouping variables
   if(is.null(group) == T & is.null(wrap) == T){
     gg_dat <- data.frame(y, id, time)
@@ -47,7 +50,7 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
       ry<-runif(1, min = 0, max = jit)
       rx<-runif(1, min = 0, max = jit)
       gg_dat_ind <- gg_dat[gg_dat$id == i,]
-      gg_dat_ind$time <- jitter(gg_dat_ind$time, amount = rx)
+      gg_dat_ind$time <- jitter(gg_dat_ind$time, factor = fact, amount = rx)
       gg_dat_ind$y <- jitter(gg_dat_ind$y, amount = ry)
       if(nrow(gg_dat_ind) >= 1){
         base <- base + geom_point(data = gg_dat_ind, aes(x = time, y = y), alpha = alpha)
