@@ -68,7 +68,6 @@ ggplot_spaghetti <- function(y, id, time, alpha = 0.2, method = "loess",
       }
     }
     base <- base + stat_smooth(data = gg_dat, aes(x = time, y = y, col = "red"), lty = 2, lwd = 2.5, method = method, se = FALSE)
-    base <- base + scale_color_manual(values = "red", name = "Overall")
     return(base)
   }
   #Here we specifying just a Group Variable
