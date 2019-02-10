@@ -4,11 +4,11 @@ The goal of ggplot.spaghetti is to aid preliminary data investigation into longi
 
 ## Installation
 
-You can install ggplot.spaghetti from github with:
+You can install ggplot.spaghetti from github via the `devtools` package with:
 
 
 ``` r
-# install.packages("devtools")
+install.packages("devtools")
 devtools::install_github("williazo/ggplot.spaghetti")
 ```
 
