@@ -32,7 +32,7 @@ ortho_plot_group <- ggplot_spaghetti(y = distance, id = Subject, time = age,
   scale_linetype_manual(name = "Gender", values = c("dashed", "solid"))
 ortho_plot_group
 ```
-![Graphing trends by age using greyscale](https://github.com/williazo/ggplot.spaghetti/blob/master/Images/https://github.com/williazo/ggplot.spaghetti/blob/master/Images/ortho_plot_group.jpg)
+![Graphing trends by age using greyscale](https://github.com/williazo/ggplot.spaghetti/blob/master/Images/ortho_plot_group.jpg)
 
 ``` r
 #specifying just wrap
