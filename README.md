@@ -32,7 +32,7 @@ ortho_plot_group <- ggplot_spaghetti(y = distance, id = Subject, time = age,
   scale_linetype_manual(name = "Gender", values = c("dashed", "solid"))
 ortho_plot_group
 ```
-![Graphing trends by age using greyscale](https://github.com/williazo/ggplot.spaghetti/blob/master/Images/ortho_plot.jpg)
+![Graphing trends by age using greyscale](https://github.com/williazo/ggplot.spaghetti/blob/master/Images/https://github.com/williazo/ggplot.spaghetti/blob/master/Images/ortho_plot_group.jpg)
 
 ``` r
 #specifying just wrap
@@ -44,7 +44,7 @@ ortho_plot_wrap <- ggplot_spaghetti(y = distance, id = Subject, time = age,
   scale_linetype_manual(name = "Race", values = c("dashed", "solid"))
 ortho_plot_wrap
 ```
-![Graphing trends by race using LOESS smoth](ortho_plot_wrap.jpg)
+![Graphing trends by race using LOESS smoth](https://github.com/williazo/ggplot.spaghetti/blob/master/Images/ortho_plot_wrap.jpg)
 
 ``` r
 #specifying both group and wrap
@@ -57,4 +57,4 @@ ortho_plot <- ggplot_spaghetti(y = distance, id = Subject, time = age,
   scale_linetype_manual(name = "Race", values = c("dashed", "solid"))
 ortho_plot
 ```
-![Graphing trends by age and race](ortho_plot.jpg)
+![Graphing trends by age and race](https://github.com/williazo/ggplot.spaghetti/blob/master/Images/ortho_plot.jpg)
