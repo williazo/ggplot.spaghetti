@@ -14,7 +14,7 @@ ortho_plot_group <- ggplot_spaghetti(y = distance, id = Subject, time = age,
   scale_color_grey(name = "Gender", start = 0.0, end = 0.5)+
   scale_linetype_manual(name = "Gender", values = c("dashed", "solid"))
 ortho_plot_group
-ggsave(ortho_plot_group, file = "ortho_plot_group.jpg", dpi = 600)
+
 
 #specifying just wrap
 ortho_plot_wrap <- ggplot_spaghetti(y = distance, id = Subject, time = age,
@@ -24,7 +24,7 @@ ortho_plot_wrap <- ggplot_spaghetti(y = distance, id = Subject, time = age,
   scale_color_grey(name = "Race", start = 0.0, end = 0.5)+
   scale_linetype_manual(name = "Race", values = c("dashed", "solid"))
 ortho_plot_wrap
-ggsave(ortho_plot_wrap, file = "ortho_plot_wrap.jpg", dpi = 600)
+
 
 #specifying both group and wrap
 ortho_plot <- ggplot_spaghetti(y = distance, id = Subject, time = age,
@@ -33,6 +33,6 @@ ortho_plot <- ggplot_spaghetti(y = distance, id = Subject, time = age,
   xlab("Age (yrs.)")+
   ylab("Distance")+
   scale_color_grey(name = "Gender", start = 0.0, end = 0.5)+
-  scale_linetype_manual(name = "Race", values = c("dashed", "solid"))
+  scale_linetype_manual(name = "Race", values = c("dashed", "solid"))+
+  theme(legend.key.width = unit(3, units = "cm"))
 ortho_plot
-ggsave(ortho_plot, file = "ortho_plot.jpg", dpi = 600)
